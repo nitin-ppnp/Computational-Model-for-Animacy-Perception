@@ -25,7 +25,7 @@ t = squeeze(resp_cart(i,:,:));
 vel(i,:) = squeeze(t(vel_direc(i),:));
 direc(i,:) = squeeze(t(:,velocity(i)));
 end
-
+veloc{a,v} = velocity
 % Get the maximum activity in shape and orientation domain, given the
 % position of the object
 for i=1:size(out,1)
@@ -82,7 +82,7 @@ for i=1:size(out,1)
     orient_mat{a,v}(i,:) = circshift(gauss_ORIENT,[-18+orientation(i)-1,0]);
     
     if(shape(i)==1)
-        orient_mat{a,v}(i,:) = sum(orient_mat{a,v}(i,:))/37;
+        orient_mat{a,v}(i,:) = sum(orient_mat{a,v}(i,:))/15;
     end
     
     gauss_y = circshift(gauss_X,[-17+y(i)-1,0]);
@@ -120,12 +120,30 @@ title(['Velocity: ',num2str(velo(v)),'x   ', 'Deviation: ',num2str(angle(a)),' d
 
 an1(a,v) = mean(animacy1{a,v}(3:lenp(v)));
 an2(a,v) = mean(animacy2{a,v}(3:lenp(v)));
+animacy{a,v} = animacy1{a,v}.*animacy2{a,v};
+an(a,v) = mean(animacy{a,v}(3:lenp(v)));
 end
 end
-an=an1.*an2;
+% an=an1.*an2;
 figure;surf(an);
 
 % plotAnimacyResp(dirPath,motion_ten,form_tens);
+
+
+%%
+for a=1:5
+for v=1:4
+vel_smth{a,v} = zeros(34,283);
+direc_smth{a,v} = zeros(34,36);
+end
+end
+for a=1:5
+for v=1:4
+vel_smth{a,v}(2:lenp(v),:) = smoothn(vel_mat{a,v}(2:lenp(v),:),1);
+direc_smth{a,v}(2:lenp(v),:) = smoothn(direc_mat{a,v}(2:lenp(v),:),1);
+end
+end
+
 
 %% Motion Energy and circular average
 

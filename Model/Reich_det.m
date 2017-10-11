@@ -73,7 +73,7 @@ for i=1:frame_skp:sz(3)
 end
 
 %%  Artificially fit gaussian to filt_tens
-gauss_X = fspecial('gaussian',[500,1],2);
+gauss_X = fspecial('gaussian',[500,1],8);
 for i=1:size(filt_tens,3)
     t = squeeze(filt_tens(:,:,i));
     [~,j] = max(t(:));
@@ -94,8 +94,16 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+% %%  PLOTS
+% temp = filt_tens(:,:,1);
+% for i=3:2:size(filt_tens,3)-3
+% temp = temp+filt_tens(:,:,i);
+% end
+% imagesc(temp)
+% axis off
 
 
+%%
 % % maxvel = 6;
 % % arstrt = maxvel+1;
 % % arend = maxvel + size(filt_tens,2);

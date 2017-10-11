@@ -16,8 +16,8 @@ listing = getFrameList(stimulipath);
 % 
 % animacy_factor = sum(marginalize(O,[2,3],'sum').*marginalize(D,[2,3],'sum'),2);
 
-f = figure;
-set(f,'Visible','off');
+% f = figure;
+% set(f,'Visible','off');
 
 for ind = 1:numel(listing)-6
 %     t = D(ind,:,:,:);
@@ -64,9 +64,9 @@ for ind = 1:numel(listing)-6
     posY = formdata.formresp.properties.rfmap.l3yct(y(ind));
     oresp = squeeze(orient(ind,:));
     [m,i] = max(oresp(:));
-    oresp(:)=0;
-    oresp(i)=m;
-    oresp = 4*oresp;
+%     oresp(:)=0;
+%     oresp(i)=m;
+    oresp = 3*oresp;
     dresp = squeeze(direc(ind,:));
     [m,i] = max(dresp(:));
     dresp(:)=0;
@@ -74,13 +74,14 @@ for ind = 1:numel(listing)-6
     dresp = vel_direc(ind)*10*dresp;
     for i = 1:36       
 %         quiver(posY,posX,oresp*sin((i-1)*pi/18)*10, oresp*cos((i-1)*pi/18)*10, 0,'color','g');
-        quiver(posY,posX, dresp(i)*sin((i-1)*pi/18)*10, dresp(i)*cos((i-1)*pi/18)*10, 0,'color','b','LineWidth',1,'MaxHeadSize',0.5);
+%         quiver(posY,posX, dresp(i)*sin((i-1)*pi/18)*10, dresp(i)*cos((i-1)*pi/18)*10, 0,'color','b','LineWidth',1,'MaxHeadSize',0.5);
+        quiver(posY,posX, oresp(i)*sin((i-1)*pi/18)*10, oresp(i)*cos((i-1)*pi/18)*10, 0,'color','B','LineWidth',0.5,'MaxHeadSize',0.5);
     end
 
     
-%         coords = formdata.formresp.properties.rfmap.l3(neuron(1),neuron(2),:,:);
-%         coords = squeeze(coords);
-%         patch(coords(:,2),coords(:,1),'b','FaceAlpha',0.3);
+        coords = formdata.formresp.properties.rfmap.l3(y(ind),x(ind),:,:);
+        coords = squeeze(coords);
+        patch(coords(:,2),coords(:,1),'y','FaceAlpha',0.1);
     
     %     coords = formdata.formresp.properties.rfmap.l3(neuron(1)-2,neuron(2),:,:);
     %     coords = squeeze(coords);
@@ -114,7 +115,7 @@ for ind = 1:numel(listing)-6
 % % % %     
 % % % %     
 % % % %     
-    print('-dpng', strcat(num2str(ind),'.png'), '-r300');
+%     print('-dpng', strcat(num2str(ind),'.png'), '-r300');
     
 %     waitforbuttonpress;
 end

@@ -26,7 +26,7 @@ w3 = 1;
 for i=1:len
     animacy1(i) = (w1*sum(vel(i,:))+w2*sum(direc(i,:))+w3*sum(vel_change(i,:)));
 %     animacy2(i) = sum(orient_mat(i,:).*direc_mat(i,:));
-    animacy2(i) = sigmf(sum(orient_smth(i,:).*direc_smth(i,:)),[200,0.04]);
+    animacy2(i) = sigmf(sum(orient_smth(i,:).*direc_smth(i,:)),[400,0.06]);
 %     animacy(i) = sum(orient_mat(i,:).*direc_mat(i,:))*(w1*sum(vel(i,:))+w2*sum(direc(i,:))+w3*sum(vel_change(i,:)));
 end
 % animacy1 = sum(vel,2);
