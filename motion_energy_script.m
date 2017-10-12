@@ -1,5 +1,5 @@
 % lenp = [14,8,6,5];
-lenp = [34,21,15,11];
+lenp = [32,20,14,11];
 velo = [0.5,1,2,4];
 angle = [0,20,40,60,80];
 figure;
@@ -82,7 +82,7 @@ for i=1:size(out,1)
     orient_mat{a,v}(i,:) = circshift(gauss_ORIENT,[-18+orientation(i)-1,0]);
     
     if(shape(i)==1)
-        orient_mat{a,v}(i,:) = sum(orient_mat{a,v}(i,:))/15;
+        orient_mat{a,v}(i,:) = sum(orient_mat{a,v}(i,:))/15.5;
     end
     
     gauss_y = circshift(gauss_X,[-17+y(i)-1,0]);
