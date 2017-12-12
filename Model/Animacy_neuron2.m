@@ -14,20 +14,19 @@ for i=2:size(vel_smth,1)
     t = xcorr(vel_smth(i,:),vel_smth(i-1,:));
     vel_change(i,:) = (-282:282).*t;
 end
+
+% Normalization
 direc = direc./35;
 vel_change = vel_change./282;
-% direc = 200*[18:-1:0,1:17].*direc_mat;
 
-w1 = 5;
-w2 = 100;
-w3 = 1;
+w1 = 5;     % weight given to the absolute velocity neurons 
+w2 = 100;   % weight given to the direction encoding neurons
+w3 = 1;     % weight given to the velocity change encoding neurons
 
-
+% Animacy calculation
 for i=1:len
     animacy1(i) = (w1*sum(vel(i,:))+w2*sum(direc(i,:))+w3*sum(vel_change(i,:)));
-%     animacy2(i) = sum(orient_mat(i,:).*direc_mat(i,:));
     animacy2(i) = sigmf(sum(orient_smth(i,:).*direc_smth(i,:)),[400,0.06]);
-%     animacy(i) = sum(orient_mat(i,:).*direc_mat(i,:))*(w1*sum(vel(i,:))+w2*sum(direc(i,:))+w3*sum(vel_change(i,:)));
 end
 % animacy1 = sum(vel,2);
 % animacy2 = sum(direc,2);

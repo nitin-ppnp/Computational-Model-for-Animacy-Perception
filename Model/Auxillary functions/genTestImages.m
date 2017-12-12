@@ -1,4 +1,9 @@
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Script to generate the test images for the RBF network. It adds the noise
+% to the existing images.
+% Author: Nitin Saini
+% Last modified: 12/12/2017
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Properties;
 TrainShapeDir = dir(properties.TrainingPath);

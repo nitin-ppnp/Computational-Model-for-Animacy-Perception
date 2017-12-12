@@ -1,6 +1,8 @@
 function [ TrainImageList, TestImageList] = getImagePath( properties )
-%GETTRAININGIMAGEPATH Summary of this function goes here
-%   Detailed explanation goes here
+% This function parse through the folder heirarchy and get the full path of
+% the training and test data
+%   Author: Nitin Saini
+%   Last modified: 12/12/2017
 
 TrainShapeDir = dir(properties.TrainingPath);
 t = ismember({TrainShapeDir.name},{'.','..','desktop.ini'});

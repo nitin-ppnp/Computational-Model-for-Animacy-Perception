@@ -1,6 +1,8 @@
 function [  properties ] = rfmapping( properties )
-%RFMAPPING Summary of this function goes here
-%   Detailed explanation goes here
+% This function adds to the properties of the model. It calculates the
+% mapping of the various layers of formpathway (like centers of different RFs).
+%   Author: Nitin Saini
+%   Last modified: 12/12/2017
 
 %% L1
 v1size = [length(properties.l1.xgct),length(properties.l1.ygct)];

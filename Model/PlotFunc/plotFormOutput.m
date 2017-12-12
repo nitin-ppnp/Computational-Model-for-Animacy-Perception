@@ -1,4 +1,7 @@
 function plotFormOutput(folder, y,x)
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           Unused function
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % plotFormOutput(pathkey, timestamp);
 %          plots responses of the form pathway of the Giese-Poggio 2003
 %          model to the stimuli of large shaded walkers. Takes folder as
@@ -15,6 +18,7 @@ function plotFormOutput(folder, y,x)
 %                Version 1.1,  7 April 2015 by Leonid Fedorov.
 %
 %                Tested with MATLAB 8.4 on a Xeon E5-1620 3.6Ghz under W7
+
 %
 stimulipath = folder;
 % % narginchk(1, 2)

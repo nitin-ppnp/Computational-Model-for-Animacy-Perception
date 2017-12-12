@@ -1,5 +1,8 @@
 function [ out_tens ] = marginalize( tensor, dim, type )
-%MARGINALIZE returns the marginalized tensor
+% Used to marginalize a tensor along the provided dimensions. Supports only
+% the sum pooling.
+% Author: Nitin Saini
+% Last modified: 12/12/2017
 
 sz = size(tensor);
 rem_dim = 1:length(sz);

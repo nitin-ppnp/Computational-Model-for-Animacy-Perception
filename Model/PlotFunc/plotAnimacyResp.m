@@ -1,3 +1,8 @@
+
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           Unused Script (code snippets can be sued for plotting)
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % function [  ] = plotAnimacyResp(dirPath)
 %PLOTANIMACYRESP Summary of this function goes here
 %   Detailed explanation goes here

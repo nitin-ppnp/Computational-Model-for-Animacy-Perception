@@ -1,3 +1,9 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This script loads the training data, trains the RBF network and checks
+% the performance on the training and the validation (test) data.
+% Author: Nitin Saini
+% Last modified: 12/12/2017
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Run the properties script to initialize the model parameters
 Properties;
@@ -23,7 +29,7 @@ l3x = properties.l3neuronToTrain(1);
 l3y = properties.l3neuronToTrain(2);
 numCat = (floor((length(TrainList)-1)/properties.TrainDataPerCat)+1);
 
-%% script block
+%% prepare and load the training data
 X=[];
 y=[];
 data=[];
@@ -118,7 +124,9 @@ fprintf('Training accuracy of SVM: %.2f%%\n', validationAccuracy*100);
 
 save('model_SVM.mat', 'trainedClassifier','validationAccuracy','properties');
 
+
 %%% Predicting class labels, TestData should have the same predictors
+
 % predict(trainedClassifier.ClassificationSVM, TestData);
 %%
 % ========================================

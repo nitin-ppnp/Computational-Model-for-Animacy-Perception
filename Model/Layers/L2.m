@@ -1,6 +1,7 @@
 function [ FV4bar, pos] = L2( FV1f, FV1c,v1pos, properties )
-%L2 Summary of this function goes here
-%   Detailed explanation goes here
+% Performs the max pooling over the gabor filtered images.
+% Author: Nitin Saini
+% Last modified: 12/12/2017
 
 
 timeSize = size(FV1f,4);

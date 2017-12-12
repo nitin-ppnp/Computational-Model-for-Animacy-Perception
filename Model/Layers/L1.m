@@ -1,6 +1,8 @@
 function [ FV1f, FV1c, pos ] = L1( PXM, properties )
-%L1 Summary of this function goes here
-%   Detailed explanation goes here
+% Performs the processing of the first layer of the formapathway (gabos
+% filtering).
+% Author: Nitin Saini
+% Last modified: 12/12/2017
 
 timeSize = size(PXM, 3);
 % create the Gabor function array
