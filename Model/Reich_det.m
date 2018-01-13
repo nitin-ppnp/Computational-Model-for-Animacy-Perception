@@ -1,6 +1,15 @@
-function [ resp_cart,resp,mcart,ncart] = Reich_det(dirPath )
+function [ resp_cart,resp] = Reich_det(dirPath )
 %   This module takes in the directory path of the saved preprocessed
 %   images and performs the motionpathway processing (till veclocity detection).
+%
+% Inputs:
+%    input - path to the directory of saved images
+% Outputs:
+%    Output 1 - response of the reichardt detector layer in cartesian
+%    coordinate
+%    Output 2 - response of the reichardt detector layer in polar
+%    coordinate 
+% 
 % Author: Nitin Saini
 % Last modified: 12/12/2017
 

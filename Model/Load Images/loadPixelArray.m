@@ -1,4 +1,15 @@
 function [pixelArray] = loadPixelArray(stimuliPath)
+% This function reads the images from the folder and return them in a single array.  
+%
+% Inputs:
+%    input 1 - path to the images
+% Outputs:
+%    Output - return the grayscaled image array
+
+% Author: Nitin Saini
+% Last modified: 12/12/2017
+
+
 
 
 narginchk(1,1)

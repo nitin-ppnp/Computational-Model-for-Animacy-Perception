@@ -1,6 +1,14 @@
 %%%%%%%%%% Description %%%%%%%%%%%
 
 % This script runs the formpathway on the videos provided in the 'Videos folder'
+% This script reads the input videos, process them through the formapathway
+% and store the results in a .mat file
+% 
+% Inputs:
+% 
+% Outputs:
+%    Output - Sampled images and processed data saved to .mat file
+% 
 % Author: Nitin Saini
 % Last modified: 12/12/2017
 
@@ -57,6 +65,7 @@ else
     % take these images as the input.
     conditionList = storeAVIasPNGset(folder);
     parfor i=1:length(conditionList)
+%         Process the videos through the formpathway
         computeFormOutput(conditionList{i},properties);
     end
 end

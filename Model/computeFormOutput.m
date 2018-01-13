@@ -1,6 +1,14 @@
 function [success] = computeFormOutput(stimulipath,properties)
 % Loads the images and processes them for the first two layers of the frompathway. 
 % Then prepares the output in the different cells to give input to the RBF network.
+
+% Inputs:
+%    input 1 - path to the input videos
+%    input 2 - the properties object to run the model  
+% Outputs:
+%    Output - saves the processed formapathway data (before rbf network) to
+%    the mat file and returns the success status
+
 % Author: Nitin Saini
 % Last modified: 12/12/2017
 

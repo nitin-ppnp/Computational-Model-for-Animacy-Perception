@@ -1,8 +1,18 @@
 function [ resp ] = classifierOP( dirPath)
-%CLASSIFIEROP Summary of this function goes here
-%   Detailed explanation goes here
+%   This module takes in the directory path of the saved output of
+%   formapathway before rbf network and outputs the response of the rbf
+%   network.
+%
+% Inputs:
+%    input - path to the directory of saved processed output of
+%    formapathway before rbf network
+% Outputs:
+%    Output - response of the rbf network
+% 
+% Author: Nitin Saini
+% Last modified: 12/12/2017
 
-
+% load the trained and saved model
 load('model.mat');
 load([dirPath,'/','formresp.mat']);
 
@@ -17,7 +27,7 @@ resp = nan(catsize,length(properties.l3.yct),length(properties.l3.xct),propertie
 
 
 %%%%%%%%%%%%%%%
-properties.asymmetricData = true;
+properties.asymmetricData = true;   % for the assymetric rectangle with the eyes
 %%%%%%%%%%%%%%
 
 %  Weight sharing and response calculation for each l3 neuron

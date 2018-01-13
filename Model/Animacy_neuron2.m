@@ -1,11 +1,28 @@
-function [ animacy1,animacy2 ] = Animacy_neuron2( vel_mat, direc_mat, shp_mat, orient_mat, space_mat, motion_resp_pol,len)
-%ANIMACY_NEURON Summary of this function goes here
-%   Detailed explanation goes here
+function [ animacy1,animacy2 ] = Animacy_neuron2( vel_mat, direc_mat, orient_mat,len)
+% This function takes in the output of the formapathway and motion pathway and 
+% outputs the animacy ratings.  
+%
+% Inputs:
+%    input 1 - velocity matrix
+%    input 2 - velocity direction matrix
+%    input 3 - orientation direction matrix
+%    input 4 - length of video for each velcity config 
+% Outputs:
+%    Output 1 - animacy realted to the velocity and direction change of the
+%    object
+%    Output 2 - animacy related to the orientation and motion direction of
+%    the object
+% 
+% Author: Nitin Saini
+% Last modified: 12/12/2017
 
+% smooth the input matrices
 vel_smth(2:len,:) = smoothn(vel_mat(2:len,:),1);
 direc_smth(2:len,:) = smoothn(direc_mat(2:len,:),1);
 orient_smth(2:len,:) = smoothn(orient_mat(2:len,:),1);
 
+% get the acceleration using the reichardt detector on top of the velocity
+% detector
 vel = (1:size(vel_smth,2)).*vel_smth;
 vel = vel./283;
 for i=2:size(vel_smth,1)

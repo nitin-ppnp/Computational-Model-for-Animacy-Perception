@@ -3,17 +3,23 @@
 % and Feldman (2000) like input videos. It loads the preprocessed and saved
 % data and processes it thorugh the complete formpathway and the motion
 % pathway (till velocity detector i.e. layer 2 of the motion pathway).
+%
+% Inputs:
+%    
+% Outputs:
+%    Output - Animacy rating for each input video
+% 
 % Author: Nitin Saini
 % Last modified: 12/12/2017
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Set the time length, velocity change and the angle for running through
 % the loop
-lenp = [32,20,14,11];
-velo = [0.5,1,2,4];
-angle = [0,20,40,60,80];
+lenp = [32,20,14,11];   % different time values for each video since higher velocity video has less on screen time of object
+velo = [0.5,1,2,4];     % 4 velocity configs
+angle = [0,20,40,60,80];% 5 angle configs    
 
-figure;
+% for each velocity and each angle
 for a=1:5
     for v=1:4
         
@@ -21,7 +27,7 @@ for a=1:5
         dirPath = strcat('Vid2process_crcle_3samp\',num2str(angle(a)),'deg',num2str(velo(v)),'V')       % to print during runtime
         
         %         Process through the motion pathway (till velocity detection)
-        [resp_cart, resp,~,~] = Reich_det(dirPath);
+        [resp_cart, resp] = Reich_det(dirPath);
         
         %         Process through the RBF network
         out = classifierOP(dirPath);
@@ -80,12 +86,13 @@ for a=1:5
         for i=1:size(out,1)
             
             %             Adjust the gaussians to align the maxima
+%             velocity direction of object
             direc_mat{a,v}(i,:) = circshift(gauss_ORIENT,[-18+vel_direc(i)-1,0]);
-            
+%             velocity of the object
             vel_mat{a,v}(i,:) = circshift(gauss_VEL,[-141+velocity(i)-1,0]);
-            
+%             shape of the object
             shp_mat{a,v}(i,:) = circshift(gauss_SHP,[-1+shape(i)-1,0]);
-            
+%             orientation direction of the object
             orient_mat{a,v}(i,:) = circshift(gauss_ORIENT,[-18+orientation(i)-1,0]);
             
             %             Distribute the response energy if the object is symmetric
@@ -93,9 +100,10 @@ for a=1:5
                 orient_mat{a,v}(i,:) = sum(orient_mat{a,v}(i,:))/15.5;
             end
             
+%             fit the gaussian for y coordinate of position of the object
             gauss_y = circshift(gauss_X,[-17+y(i)-1,0]);
             gauss_y = gauss_y(1:size(out,2));
-            
+%             fit the gaussian for x coordinate of position of the object
             gauss_x = circshift(gauss_X,[-17+x(i)-1,0]);
             gauss_x = gauss_x(1:size(out,2));
             
@@ -109,7 +117,7 @@ for a=1:5
     for v=1:4
         
         %         Get the animacy results
-        [animacy1{a,v},animacy2{a,v}] = Animacy_neuron2( vel_mat{a,v}, direc_mat{a,v}, shp_mat{a,v}, orient_mat{a,v}, space_mat{a,v}, resp, lenp(v));
+        [animacy1{a,v},animacy2{a,v}] = Animacy_neuron2( vel_mat{a,v}, direc_mat{a,v}, orient_mat{a,v}, lenp(v));
         
     end
 end
