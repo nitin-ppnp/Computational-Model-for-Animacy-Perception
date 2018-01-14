@@ -1,8 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This is the main script to get the results of the model for the Tremoulet
 % and Feldman (2000) like input videos. It loads the preprocessed and saved
-% data and processes it thorugh the complete formpathway and the motion
-% pathway (till velocity detector i.e. layer 2 of the motion pathway).
+% data after formapathway processing, runs it thorugh the rbf network and the motion
+% pathway. The output from these pathways are then fed to the animacy
+% neuron to get the animacy response.
 %
 % Inputs:
 %    
@@ -15,7 +16,7 @@
 
 % Set the time length, velocity change and the angle for running through
 % the loop
-lenp = [32,20,14,11];   % different time values for each video since higher velocity video has less on screen time of object
+lenp = [32,20,14,11];   % different time values for each video since higher velocity video has less on-screen time of object
 velo = [0.5,1,2,4];     % 4 velocity configs
 angle = [0,20,40,60,80];% 5 angle configs    
 
@@ -122,31 +123,32 @@ for a=1:5
     end
 end
 
-%%  Plotting subroutines (enable if required)
-if(0)
+%%  Plotting subroutines
+% Get the plaottable results from the animacy output
     for a=1:5
         for v=1:4
-            subplot(4,5,5*(v-1)+a);
-            % an(v,a) = mean(animacy{a,v}(3:lenp(v)));
-            plot(animacy1{a,v}(2:end),'b');
-            
-            % plot(animacy1{a,v}(2:end),'b');
-            % hold on
-            % plot(animacy2{a,v}(2:end),'r');
-            
-            title(['Velocity: ',num2str(velo(v)),'x   ', 'Deviation: ',num2str(angle(a)),' degree']);
-            
+%             mean animacy (starts from 3rd frame as we neglect initial 
+%             two frames to make sure that object is comletely in the frame)
             an1(a,v) = mean(animacy1{a,v}(3:lenp(v)));
             an2(a,v) = mean(animacy2{a,v}(3:lenp(v)));
             animacy{a,v} = animacy1{a,v}.*animacy2{a,v};
             an(a,v) = mean(animacy{a,v}(3:lenp(v)));
         end
     end
-    % an=an1.*an2;
+%     Plot the results
     figure;surf(an);
-    
-    % plotAnimacyResp(dirPath,motion_ten,form_tens);
-end
+    figure;
+    subplot(1,2,1);
+    plot(mean(an,1));
+    xticklabels(velo);
+    xlabel('veolcity');
+    ylabel('Animacy Response');
+    title({'Object type: Circle','Animacy Response with change in velocity'});
+    subplot(1,2,2);
+    plot(mean(an,2));
+    xticklabels(angle);
+    xlabel('Angle');
+    title({'Object type: Circle','Animacy Response with change in angle'});
 
 %%  Alternate smoothing of the gaussians in time and space (use this peice of code if required)
 % 
