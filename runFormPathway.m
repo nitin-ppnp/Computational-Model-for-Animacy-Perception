@@ -14,8 +14,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 %% Set video folder. This folder contains videos for model input.
 videofolder = 'vid2process60circ';
 

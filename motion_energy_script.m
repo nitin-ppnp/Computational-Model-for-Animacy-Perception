@@ -71,11 +71,11 @@ for a=1:5
         %%%%%%%%%%%%%%%%% Gaussian fitting to the max %%%%%%%%%%%%%%%%%%%%%%%%
         
         % Generate the gaussians
-        gauss_ORIENT = fspecial('gaussian',[36+1,1],2);
-        gauss_ORIENT = gauss_ORIENT(1:end-1);
-        gauss_SHP = fspecial('gaussian',[3,1],0.5);
-        gauss_VEL = fspecial('gaussian',[283,1],5);
-        gauss_X = fspecial('gaussian',[35,1],10);
+        gauss_ORIENT = fspecial('gaussian',[36+1,1],2); % 36 directions
+        gauss_ORIENT = gauss_ORIENT(1:end-1);   
+        gauss_SHP = fspecial('gaussian',[3,1],0.5);     % 3 shapes
+        gauss_VEL = fspecial('gaussian',[283,1],5);     % 283 velocity levels
+        gauss_X = fspecial('gaussian',[35,1],10);       % 35 neurons in space
         
         %         Allocate memory for the variables
         direc_mat{a,v} = zeros(size(out,1),length(gauss_ORIENT));
