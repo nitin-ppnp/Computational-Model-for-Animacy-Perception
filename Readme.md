@@ -29,3 +29,9 @@ Below are the two scripts and their call to different functions briefly explaine
     * [Get the maximum for velocity, shape, orientation, velocity direction, position]
     * [Put the gaussians at the obtained maxima]
     * __Animacy_neuron2(...)__ [acceleration detection and animacy ratings for each video]
+	
+	
+__Note:__ 
+
+* The RBF network used in this code is originally written by Chris McCormick [http://mccormickml.com/2013/08/16/rbf-network-matlab-code/].
+* There are additional functions and scripts that are included in this repository but are not the part of the model. They were written to analyze some stages of the model.
