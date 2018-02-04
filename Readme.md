@@ -4,9 +4,9 @@ This model reproduces the results form the animacy study from __Tremoulet and Fe
 
 ![The Model](/Thesis/The_model.png)
 
-There are two scripts that run the full model. First is the __�runFormPathway.m�__. This script takes in the videos and process it through the first stage of formpathway i.e. orientation detection block. This stage is computationally expensive and that is why the __runFormPathway__ script saves the video frames as images and the processed output as the �*.mat� file on the disk. This repository includes the already processed output of the __runFormPathway__ script.  
+There are two scripts that run the full model. First is the __runFormPathway.m__. This script takes in the videos and process it through the first stage of formpathway i.e. orientation detection block. This stage is computationally expensive and that is why the __runFormPathway__ script saves the video frames as images and the processed output as the "*.mat" file on the disk. This repository includes the already processed output of the __runFormPathway__ script.  
 
-The rest of the model is run by the __�motion_energy_script.m�__. To get the animacy ratings, run the __motion_energy_script__. It�ll use the already processed data from the runFormPathway and generates the animacy ratings of the input videos.   
+The rest of the model is run by the __motion_energy_script.m__. To get the animacy ratings, run the __motion_energy_script__. It'll use the already processed data from the runFormPathway and generates the animacy ratings of the input videos.   
 
 Below are the two scripts and their call to different functions briefly explained.
 
